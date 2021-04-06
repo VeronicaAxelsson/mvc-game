@@ -1,0 +1,8 @@
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Router\Router.php:21	The method dispatch() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10.
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Router\Router.php:61	Missing class import via use statement (line '61', column '41').
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Router\Router.php:79	Missing class import via use statement (line '79', column '37').
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\functions.php:67	Missing class import via use statement (line '67', column '23').
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\functions.php:73	Missing class import via use statement (line '73', column '21').
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Dice.php	-	Unexpected token: ?, line: 14, col: 13, file: C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Dice.php.
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\DiceHand.php	-	Unexpected token: array, line: 14, col: 13, file: C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\DiceHand.php.
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Game.php	-	Unexpected token: int, line: 19, col: 13, file: C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Game.php.
