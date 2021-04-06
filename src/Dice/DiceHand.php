@@ -8,7 +8,11 @@ namespace Veax\Dice;
 class DiceHand
 {
     /**
-    * @var integer $roll    The value of latest roll.
+    * @var array $rolls     The value of the rolls.
+    * @var array $dices     Array with dies.
+    * @var array $classes   Array with graphic representation of rolls.
+    * @var int $sum     Sum of the rolls.
+    * @var int $average Average of the rolls.
     */
 
     private array $rolls = [];

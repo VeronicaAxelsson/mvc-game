@@ -3,12 +3,9 @@
 namespace Veax\Dice;
 
 use function Mos\Functions\{
-    destroySession,
     redirectTo,
     renderView,
-    renderTwigView,
-    sendResponse,
-    url
+    sendResponse
 };
 
 /**
@@ -16,12 +13,23 @@ use function Mos\Functions\{
  */
 class Game
 {
+    /**
+    * @var int $pointsPlayer     Number of won games for player.
+    * @var int $pointsComputer   Number of won games for computer
+    * @var array $classes            Classes for graphic dice.
+    * @var string $message           Message for player.
+    */
     private int $pointsPlayer = 0;
     private int $pointsComputer = 0;
     private array $classes = [];
     private string $message = "Välj antal tärningar att kasta eller stanna";
 
 
+    /**
+    * Start a game.
+    *
+    * @return void
+    */
     public function playGame(): void
     {
         $data["header"] = "Game21";
@@ -40,6 +48,11 @@ class Game
         sendResponse($body);
     }
 
+    /**
+    * Roll dies.
+    *
+    * @return void
+    */
     public function rollDice(): void
     {
         if (!isset($_SESSION["sumPlayer"])) {
@@ -62,8 +75,15 @@ class Game
         if ($_SESSION["sumPlayer"] >= 21) {
             self::checkWinner();
         }
+
+        redirectTo("game21");
     }
 
+    /**
+    * A game of 21 is played automatically.
+    *
+    * @return void
+    */
     public function playComputer(): void
     {
         if (!isset($_SESSION["sumComputer"])) {
@@ -78,13 +98,25 @@ class Game
         }
     }
 
+    /**
+    * Reset game
+    *
+    * @return void
+    */
     public function resetGame(): void
     {
         $_SESSION["sumPlayer"] = 0;
         $_SESSION["sumComputer"] = 0;
         $this->message = "Välj antal tärningar att kasta eller stanna";
+
+        redirectTo("game21");
     }
 
+    /**
+    * Check who the winner is.
+    *
+    * @return void
+    */
     public function checkWinner(): void
     {
         // var_dump($_SESSION);
@@ -109,5 +141,7 @@ class Game
             $this->message = "Datorn vinner";
             $this->pointsComputer += 1;
         }
+
+        redirectTo("game21");
     }
 }

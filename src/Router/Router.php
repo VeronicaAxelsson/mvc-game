@@ -64,23 +64,18 @@ class Router
             return;
         } else if ($method === "POST" && $path === "/game21") {
             $_SESSION["game"]->rollDice();
-            redirectTo("game21");
             return;
         } else if ($method === "POST" && $path === "/endgame21") {
             $_SESSION["game"]->checkWinner();
-            redirectTo("game21");
             return;
         } else if ($method === "POST" && $path === "/newroundgame21") {
             $_SESSION["game"]->resetGame();
-            redirectTo("game21");
             return;
         } else if ($method === "POST" && $path === "/resetscore") {
-            $_SESSION["game"]->resetGame();
             $_SESSION["game"] = new \Veax\Dice\Game();
-            redirectTo("game21");
+            $_SESSION["game"]->resetGame();
             return;
         }
-
 
         $data = [
             "header" => "404",
