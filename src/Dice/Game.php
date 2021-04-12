@@ -24,7 +24,6 @@ class Game
     private array $classes = [];
     private string $message = "Välj antal tärningar att kasta eller stanna";
 
-
     /**
     * Start a game.
     *
