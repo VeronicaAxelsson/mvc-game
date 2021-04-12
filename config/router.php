@@ -32,6 +32,13 @@ $router->addGroup("/game21", function (RouteCollector $router) {
     $router->addRoute("POST", "/newround", ["\Veax\Controller\Game21", "newRound"]);
 });
 
+$router->addGroup("/yatzy", function (RouteCollector $router) {
+    $router->addRoute("GET", "", ["\Veax\Controller\Yatzy", "index"]);
+    $router->addRoute("POST", "/throw", ["\Veax\Controller\Yatzy", "throw"]);
+    $router->addRoute("POST", "/endround", ["\Veax\Controller\Yatzy", "endRound"]);
+    $router->addRoute("POST", "/newround", ["\Veax\Controller\Yatzy", "newRound"]);
+});
+
 $router->addGroup("/some", function (RouteCollector $router) {
     $router->addRoute("GET", "/where", ["\Mos\Controller\Sample", "where"]);
 });
