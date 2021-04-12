@@ -53,12 +53,12 @@ foreach ($classes as $class) {
 ?>
 </div>
 
-<form method="post" action="endgame21">
+<form method="post" action="game21/end">
     <input type="submit" name="submit" value="Stanna">
 </form>
-<form method="post" action="newroundgame21">
+<form method="post" action="game21/newround">
     <input type="submit" name="submit" value="Ny runda">
 </form>
-<form method="post" action="resetscore">
+<form method="post" action="game21/reset">
     <input type="submit" name="submit" value="Nollställ poängen">
 </form>

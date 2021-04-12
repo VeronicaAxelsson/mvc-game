@@ -23,6 +23,7 @@ class Game
     private int $pointsComputer = 0;
     private array $classes = [];
     private string $message = "Välj antal tärningar att kasta eller stanna";
+    private array $data = [];
 
     /**
     * Start a game.
@@ -31,20 +32,31 @@ class Game
     */
     public function playGame(): void
     {
-        $data["header"] = "Game21";
-        $data["message"] = $this->message;
-        $data["pointsComputer"] = $this->pointsComputer;
-        $data["pointsPlayer"] = $this->pointsPlayer;
-        $data["classes"] = $this->classes;
+        $this->data["header"] = "Game21";
+        $this->data["message"] = $this->message;
+        $this->data["pointsComputer"] = $this->pointsComputer;
+        $this->data["pointsPlayer"] = $this->pointsPlayer;
+        $this->data["classes"] = $this->classes;
 
         if (isset($_SESSION["sumPlayer"])) {
-            $data["sumPlayer"] = $_SESSION["sumPlayer"];
+            $this->data["sumPlayer"] = $_SESSION["sumPlayer"];
         }
         if (isset($_SESSION["sumComputer"])) {
-            $data["sumComputer"] = $_SESSION["sumComputer"];
+            $this->data["sumComputer"] = $_SESSION["sumComputer"];
         }
-        $body = renderView("layout/game21.php", $data);
-        sendResponse($body);
+        // $body = renderView("layout/game21.php", $this->data);
+        // sendResponse($body);
+    }
+
+
+    /**
+    * Return data array
+    *
+    * @return array
+    */
+    public function getData(): array
+    {
+        return $this->data;
     }
 
     /**
@@ -75,7 +87,7 @@ class Game
             self::checkWinner();
         }
 
-        redirectTo("game21");
+        // redirectTo("game21");
     }
 
     /**
@@ -141,6 +153,6 @@ class Game
             $this->pointsComputer += 1;
         }
 
-        redirectTo("game21");
+        // redirectTo("game21");
     }
 }
