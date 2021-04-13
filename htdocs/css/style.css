@@ -152,6 +152,15 @@ input[type=submit] {
     margin-bottom: 2em;
 }
 
+table {
+    width: 50%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 /**
  * CSS sprite for a dice with six faces.
  */

@@ -22,7 +22,7 @@ class Yatzy
     */
     private int $pointsPlayer = 0;
     private array $values = [];
-    private string $message = "Välj vilka tärningar du viill spara, och tryck sedan på spara";
+    private string $message = "Välj vilka tärningar du viill spara, och tryck sedan på kasta";
     private array $data = [];
     private int $throws = 0;
     private int $round = 1;
@@ -30,6 +30,7 @@ class Yatzy
     private int $dice = 5;
     private int $sum = 0;
     private int $diceRound = 0;
+    private array $score = [];
 
     /**
     * Start a game.
@@ -41,15 +42,9 @@ class Yatzy
         if (!isset($_SESSION["yatzySum"])) {
             $_SESSION["yatzySum"] = 0;
         }
+
         $this->data["header"] = "Yatzy";
         $this->data["message"] = $this->message;
-        // $this->data["pointsComputer"] = $this->pointsComputer;
-        // $this->data["pointsPlayer"] = $this->pointsPlayer;
-        // $this->data["classes"] = $this->classes;
-
-        // if ($this->round < 6 ) {
-        // $this->playRound($this->dice);
-        // }
 
         $diceHand = new \Veax\Dice\DiceHand($this->dice);
         $rolls = $diceHand->roll();
@@ -61,26 +56,6 @@ class Yatzy
         }
 
         $this->data["values"] = $this->values;
-        // if (isset($_POST) {
-            // $this->savedValues = [];
-            // $count = 0;
-            // foreach ($_POST as $key => $value) {
-            //     if ($key !== "submit") {
-            //         $this->savedValues[] = $key;
-            //         $count += 1;
-            //     }
-            // }
-            // $this->dice -= $count;
-            // $this->data["savedValues"] = $this->savedValues;
-        // }
-
-
-        // if (isset($_SESSION["yatzyRound"])) {
-        //     $this->data["yatzyRound"] = $_SESSION["yatzyRound"];
-        // }
-
-        // $body = renderView("layout/game21.php", $this->data);
-        // sendResponse($body);
     }
 
     public function rollDice()
@@ -108,13 +83,9 @@ class Yatzy
                 $this->savedValues[] = $value;
                 $count += 1;
             }
-            // $this->sumRound();
         }
 
         $this->dice -= $count;
-        if ($this->dice === 0) {
-            $this->sumRound();
-        }
         $this->data["savedValues"] = $this->savedValues;
         $this->diceRound += 1;
     }
@@ -124,7 +95,6 @@ class Yatzy
     public function showPost()
     {
 
-
         $this->data["post"] = $_POST;
 
     }
@@ -132,12 +102,14 @@ class Yatzy
     public function sumRound()
     {
         foreach ($this->savedValues as $key => $value) {
-            if ((int)$value === $this->round) {
-                $this->sum += $value;
+            if ($value === (int)$_POST["submit"]) {
+                $this->sum += (int)$value;
             }
         }
 
         $this->data["sum"] = $this->sum;
+        $this->score[$_POST["submit"]] =  $this->sum;
+        $this->data["score"] = $this->score;
 
         $_SESSION["yatzySum"] += $this->sum;
     }
@@ -146,6 +118,16 @@ class Yatzy
     {
         if ($this->round >= 6) {
             $this->message = "Game over";
+            $this->savedValues = [];
+            $this->data["savedValues"] = $this->savedValues;
+            $this->data["sum"] = $this->sum;
+            $this->score["summa"] = $_SESSION["yatzySum"];
+
+            if ($_SESSION["yatzySum"] >= 63) {
+                $this->score["bonus"] = 50;
+            }
+            $this->data["score"] = $this->score;
+            return;
         }
         $this->sum = 0;
         $this->dice = 5;

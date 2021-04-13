@@ -45,22 +45,17 @@ class Yatzy
         $_SESSION["yatzy"]->showPost();
         $_SESSION["yatzy"]->rollDice();
 
-
-        // $body = renderView("layout/test.php", $data);
-
         return (new Response())
             ->withStatus(301)
             ->withHeader("Location", url("/yatzy"));
     }
 
-    public function endRound(): ResponseInterface
+    public function newGame(): ResponseInterface
     {
         $psr17Factory = new Psr17Factory();
 
-        $_SESSION["yatzy"]->sumRound();
-
-
-        // $body = renderView("layout/test.php", $data);
+        $_SESSION["yatzy"] = new \Veax\Yatzy\Yatzy();
+        $_SESSION["yatzySum"] = 0;
 
         return (new Response())
             ->withStatus(301)
@@ -70,11 +65,8 @@ class Yatzy
     public function newRound(): ResponseInterface
     {
         $psr17Factory = new Psr17Factory();
-
+        $_SESSION["yatzy"]->sumRound();
         $_SESSION["yatzy"]->newRound();
-
-
-        // $body = renderView("layout/test.php", $data);
 
         return (new Response())
             ->withStatus(301)

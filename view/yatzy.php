@@ -20,24 +20,52 @@ $post = $post ?? null;
 $sum = $sum ?? 0;
 $score = $score ?? [];
 
+$tableValues = [
+    "1" => "Ettor",
+    "2" => "Tvåor",
+    "3" => "Treor",
+    "4" => "Fyror",
+    "5" => "Femmor",
+    "6" => "Sexor"
+];
+
 // var_dump($post);
 var_dump($data);
  ?>
 
 
-
-
 <h1>Yatzy</h1>
 
-<div class="points">
-    <p><b>Total poäng</b></p>
-    <p><?= $_SESSION["yatzySum"] ?></p>
-</div>
-
-<div class="points">
-    <p><b>Rundans poöng</b></p>
-    <p><?= $sum ?></p>
-</div>
+<form class="" action="yatzy/newround" method="post">
+    <table>
+        <tr>
+            <th>Spelare</th>
+            <th>Player1</th>
+        </tr>
+        <?php foreach ($tableValues as $key => $value) { ?>
+            <tr>
+                <tr>
+                    <td>
+                        <?php if (isset($score[$key])) { ?>
+                            <?= $value ?>
+                        <?php } else { ?>
+                            <button name="submit" value="<?= $key ?>" type="submit"><?= $value ?></button>
+                        <?php } ?>
+                    </td>
+                    <td><?= isset($score[$key]) ? $score[$key] : ""; ?></td>
+                </tr>
+            </tr>
+        <?php } ?>
+        <tr>
+            <th>Bonus</th>
+            <th><?= isset($score["bonus"]) ? $score["bonus"] : "-"; ?></th>
+        </tr>
+        <tr>
+            <th>Summa</th>
+            <th><?= isset($score["summa"]) ? $score["summa"] : ""; ?></th>
+        </tr>
+    </table>
+</form>
 
 <p><?= $message ?></p>
 
@@ -65,51 +93,14 @@ var_dump($data);
     ?>
 </div>
 
-<!-- <form method="post" action="yatzy/endround">
-    <input type="submit" name="submit" value="Räkna rundans poäng">
-</form> -->
-<form method="post" action="yatzy/newround">
+<?php if ($message == "Game over"): ?>
+    <form method="post" action="yatzy/newgame">
+        <input type="submit" name="submit" value="Nytt spel">
+    </form>
+<?php endif; ?>
+<!-- <form method="post" action="yatzy/newround">
     <input type="submit" name="submit" value="Ny runda">
-</form>
+</form> -->
 <!-- <form method="post" action="game21/reset">
     <input type="submit" name="submit" value="Nollställ poängen">
 </form> -->
-
-<table>
-    <tr>
-        <th>Spelare</th>
-        <th>Player1</th>
-    </tr>
-    <tr>
-        <td>Ettor</td>
-        <td><?= isset($score["1"]) ? $score["1"] : ""; ?></td>
-    </tr>
-    <tr>
-        <td>Tvåor</td>
-        <td><?= isset($score["2"]) ? $score["2"] : ""; ?></td>
-    </tr>
-    <tr>
-        <td>Treor</td>
-        <td><?= isset($score["3"]) ? $score["3"] : ""; ?></td>
-    </tr>
-    <tr>
-        <td>Fyror</td>
-        <td><?= isset($score["4"]) ? $score["4"] : ""; ?></td>
-    </tr>
-    <tr>
-        <td>Femmor</td>
-        <td><?= isset($score["5"]) ? $score["5"] : ""; ?></td>
-    </tr>
-    <tr>
-        <td>Sexor</td>
-        <td><?= isset($score["6"]) ? $score["6"] : ""; ?></td>
-    </tr>
-    <tr>
-        <th>Bonus</th>
-        <th><?= isset($score["bonus"]) ? $score["bonus"] : "-"; ?></th>
-    </tr>
-    <tr>
-        <th>Summa</th>
-        <th><?= isset($score["summa"]) ? $score["summa"] : ""; ?></th>
-    </tr>
-</table>
