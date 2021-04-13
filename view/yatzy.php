@@ -18,6 +18,7 @@ $values = $values ?? [];
 $savedValues = $savedValues ?? [];
 $post = $post ?? null;
 $sum = $sum ?? 0;
+$score = $score ?? [];
 
 // var_dump($post);
 var_dump($data);
@@ -64,12 +65,51 @@ var_dump($data);
     ?>
 </div>
 
-<form method="post" action="yatzy/endround">
+<!-- <form method="post" action="yatzy/endround">
     <input type="submit" name="submit" value="Räkna rundans poäng">
-</form>
+</form> -->
 <form method="post" action="yatzy/newround">
     <input type="submit" name="submit" value="Ny runda">
 </form>
 <!-- <form method="post" action="game21/reset">
     <input type="submit" name="submit" value="Nollställ poängen">
 </form> -->
+
+<table>
+    <tr>
+        <th>Spelare</th>
+        <th>Player1</th>
+    </tr>
+    <tr>
+        <td>Ettor</td>
+        <td><?= isset($score["1"]) ? $score["1"] : ""; ?></td>
+    </tr>
+    <tr>
+        <td>Tvåor</td>
+        <td><?= isset($score["2"]) ? $score["2"] : ""; ?></td>
+    </tr>
+    <tr>
+        <td>Treor</td>
+        <td><?= isset($score["3"]) ? $score["3"] : ""; ?></td>
+    </tr>
+    <tr>
+        <td>Fyror</td>
+        <td><?= isset($score["4"]) ? $score["4"] : ""; ?></td>
+    </tr>
+    <tr>
+        <td>Femmor</td>
+        <td><?= isset($score["5"]) ? $score["5"] : ""; ?></td>
+    </tr>
+    <tr>
+        <td>Sexor</td>
+        <td><?= isset($score["6"]) ? $score["6"] : ""; ?></td>
+    </tr>
+    <tr>
+        <th>Bonus</th>
+        <th><?= isset($score["bonus"]) ? $score["bonus"] : "-"; ?></th>
+    </tr>
+    <tr>
+        <th>Summa</th>
+        <th><?= isset($score["summa"]) ? $score["summa"] : ""; ?></th>
+    </tr>
+</table>
