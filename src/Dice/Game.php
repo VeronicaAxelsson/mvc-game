@@ -2,6 +2,8 @@
 
 namespace Veax\Dice;
 
+use Veax\Dice\DiceHand;
+
 use function Mos\Functions\{
     redirectTo,
     renderView,
@@ -19,11 +21,11 @@ class Game
     * @var array $classes            Classes for graphic dice.
     * @var string $message           Message for player.
     */
-    private int $pointsPlayer = 0;
-    private int $pointsComputer = 0;
-    private array $classes = [];
-    private string $message = "Välj antal tärningar att kasta eller stanna";
-    private array $data = [];
+    private $pointsPlayer = 0;
+    private $pointsComputer = 0;
+    private $classes = [];
+    private $message = "Välj antal tärningar att kasta eller stanna";
+    private $data = [];
 
     /**
     * Start a game.
@@ -70,7 +72,7 @@ class Game
             $_SESSION["sumPlayer"] = 0;
         }
 
-        $_SESSION["diceHand"] = new \Veax\Dice\DiceHand((int)$_POST["die"]);
+        $_SESSION["diceHand"] = new DiceHand((int)$_POST["die"]);
         $rolls = $_SESSION["diceHand"]->roll();
         foreach ($rolls as $roll) {
             $_SESSION["sumPlayer"] += $roll;
@@ -101,7 +103,7 @@ class Game
             $_SESSION["sumComputer"] = 0;
         }
         while ($_SESSION["sumComputer"] < 21) {
-            $_SESSION["diceHand"] = new \Veax\Dice\DiceHand(1);
+            $_SESSION["diceHand"] = new DiceHand(1);
             $rolls = $_SESSION["diceHand"]->roll();
             foreach ($rolls as $roll) {
                 $_SESSION["sumComputer"] += $roll;

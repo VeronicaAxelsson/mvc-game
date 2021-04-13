@@ -11,7 +11,7 @@ class Dice
     * @var int $roll    The value of latest roll.
     * @var int $sides   Number of sides of the dice
     */
-    private ?int $roll = null;
+    private $roll = null;
     private $sides;
 
     /**

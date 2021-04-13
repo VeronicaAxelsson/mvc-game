@@ -7,6 +7,7 @@ namespace Veax\Controller;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
+use Veax\Yatzy\Game;
 
 use function Mos\Functions\{
     renderView,
@@ -23,7 +24,7 @@ class Yatzy
         $psr17Factory = new Psr17Factory();
 
         if (!isset($_SESSION["yatzy"])) {
-            $_SESSION["yatzy"] = new \Veax\Yatzy\Yatzy();
+            $_SESSION["yatzy"] = new Game();
         }
         $_SESSION["yatzy"]->playGame();
 
@@ -38,13 +39,8 @@ class Yatzy
 
     public function throw(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
-        $_SESSION["yatzy"]->showPost();
         $_SESSION["yatzy"]->moveDice();
         $_SESSION["yatzy"]->rollDice();
-
-
 
         return (new Response())
             ->withStatus(301)
@@ -53,9 +49,7 @@ class Yatzy
 
     public function newGame(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
-        $_SESSION["yatzy"] = new \Veax\Yatzy\Yatzy();
+        $_SESSION["yatzy"] = new Game();
         $_SESSION["yatzySum"] = 0;
 
         return (new Response())
@@ -65,7 +59,6 @@ class Yatzy
 
     public function newRound(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
         $_SESSION["yatzy"]->sumRound();
         $_SESSION["yatzy"]->newRound();
 

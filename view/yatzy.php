@@ -23,7 +23,7 @@ $tableValues = [
     "6" => "Sexor"
 ];
 // var_dump($data);
- ?>
+?>
 
 
 <h1>Yatzy</h1>
@@ -61,15 +61,15 @@ $tableValues = [
 
 <p><?= $message ?></p>
 
-<?php if ($message === "Tryck på kasta för att kasta tärningarna!" || $message === "Välj vilka tärningar du vill behålla, och kasta igen."): ?>
+<?php if ($message === "Tryck på kasta för att kasta tärningarna!" || $message === "Välj vilka tärningar du vill behålla, och kasta igen.") : ?>
     <div class="dice">
         <form method="post" action="yatzy/throw">
             <?php
             foreach ($values as $key => $value) {
-            ?>
+                ?>
             <i class="dice-sprite dice-<?= $value ?>"></i>
             <input type="checkbox" name="<?= $key ?>" value="<?= $value ?>">
-            <?php
+                <?php
             }
             ?>
             <input type="submit" name="throw" value="Kasta">
@@ -81,14 +81,14 @@ $tableValues = [
 <div class="dice">
     <?php
     foreach ($savedValues as $value) {
-    ?>
+        ?>
     <i class="dice-sprite dice-<?= $value ?>"></i>
-    <?php
+        <?php
     }
     ?>
 </div>
 
-<?php if ($message === "Game over"): ?>
+<?php if ($message === "Game over") : ?>
     <form method="post" action="yatzy/newgame">
         <input type="submit" name="submit" value="Nytt spel">
     </form>

@@ -7,6 +7,7 @@ namespace Veax\Controller;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
+use Veax\Dice\Game;
 
 use function Mos\Functions\{
     renderView,
@@ -23,7 +24,7 @@ class Game21
         $psr17Factory = new Psr17Factory();
 
         if (!isset($_SESSION["game"])) {
-            $_SESSION["game"] = new \Veax\Dice\Game();
+            $_SESSION["game"] = new Game();
         }
         $_SESSION["game"]->playGame();
 
@@ -38,8 +39,6 @@ class Game21
 
     public function roll(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $_SESSION["game"]->rollDice();
 
         return (new Response())
@@ -49,8 +48,6 @@ class Game21
 
     public function end(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $_SESSION["game"]->checkWinner();
 
         return (new Response())
@@ -60,9 +57,7 @@ class Game21
 
     public function reset(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
-        $_SESSION["game"] = new \Veax\Dice\Game();
+        $_SESSION["game"] = new Game();
         $_SESSION["game"]->resetGame();
 
         return (new Response())
@@ -72,8 +67,6 @@ class Game21
 
     public function newRound(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $_SESSION["game"]->resetGame();
 
         return (new Response())

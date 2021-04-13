@@ -12,14 +12,12 @@ class DiceHand
     * @var array $dices     Array with dies.
     * @var array $classes   Array with graphic representation of rolls.
     * @var int $sum     Sum of the rolls.
-    * @var int $average Average of the rolls.
     */
 
-    private array $rolls = [];
-    private array $dices;
-    private array $classes = [];
-    private ?int $sum = null;
-    private ?int $average = null;
+    private $rolls = [];
+    private $dices;
+    private $classes = [];
+    private $sum = null;
 
     /**
     * Constructor to initiate the dicehand with a number of dices.
