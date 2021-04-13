@@ -2,12 +2,6 @@
 
 namespace Veax\Yatzy;
 
-use function Mos\Functions\{
-    redirectTo,
-    renderView,
-    sendResponse
-};
-
 use Veax\Dice;
 /**
  * Dice class
@@ -15,22 +9,24 @@ use Veax\Dice;
 class Yatzy
 {
     /**
-    * @var int $pointsPlayer     Number of won games for player.
-    * @var int $pointsComputer   Number of won games for computer
-    * @var array $values            Classes for graphic dice.
-    * @var string $message           Message for player.
+    * @var string $message          Message for player.
+    * @var array $values            The values of the thrown dice.
+    * @var array $data              Array with data to be passed when rendering view.
+    * @var array $savedValues       Values of the choosen dice for each round.
+    * @var array $score             Scores for each kind of dice, total score and bonus.
+    * @var int $throws              Number of throws that been thrown during one round.
+    * @var int $round               Number of rounds that been played during one game.
+    * @var int $dice                Number of dice to be passed to DiceHand.
+    * @var int $throws              Number of throws that been thrown during one round.
     */
-    private int $pointsPlayer = 0;
+    private string $message = "Tryck på kasta för att kasta tärningarna!";
     private array $values = [];
-    private string $message = "Välj vilka tärningar du viill spara, och tryck sedan på kasta";
     private array $data = [];
+    private array $savedValues = [];
+    private array $score = [];
     private int $throws = 0;
     private int $round = 1;
-    private array $savedValues = [];
     private int $dice = 5;
-    private int $sum = 0;
-    private int $diceRound = 0;
-    private array $score = [];
 
     /**
     * Start a game.
@@ -45,10 +41,17 @@ class Yatzy
 
         $this->data["header"] = "Yatzy";
         $this->data["message"] = $this->message;
+    }
 
+    /**
+    * Roll dice.
+    *
+    * @return void
+    */
+    public function rollDice(): void
+    {
         $diceHand = new \Veax\Dice\DiceHand($this->dice);
         $rolls = $diceHand->roll();
-        // $this->round += 1;
         $this->values = [];
 
         foreach ($diceHand->values() as $roll) {
@@ -58,84 +61,94 @@ class Yatzy
         $this->data["values"] = $this->values;
     }
 
-    public function rollDice()
+    /**
+    * Moves dice from values to saved values
+    *
+    * @return void
+    */
+    public function moveDice(): void
     {
-        if ($this->diceRound < 2) {
             $count = 0;
             foreach ($_POST as $key => $value) {
-                if ($key !== "submit") {
+                if ($key !== "throw") {
                     $this->savedValues[] = $value;
                     $count += 1;
                 }
             }
-        } else {
-            $count = 0;
-            foreach ($_POST as $key => $value) {
-                if ($key !== "submit") {
+            $this->message = "Välj vilka tärningar du vill behålla, och kasta igen.";
+
+
+            if ($this->throws > 1) {
+                $this->message = "Välj vilka tärningar du vill räkna";
+                $this->dice -= $count;
+                $this->rollDice();
+                $count = 0;
+                foreach ($this->values as $key => $value) {
                     $this->savedValues[] = $value;
                     $count += 1;
                 }
             }
+
             $this->dice -= $count;
-            $this->playGame();
-            $count = 0;
-            foreach ($this->values as $key => $value) {
-                $this->savedValues[] = $value;
-                $count += 1;
-            }
-        }
-
-        $this->dice -= $count;
-        $this->data["savedValues"] = $this->savedValues;
-        $this->diceRound += 1;
+            $this->data["savedValues"] = $this->savedValues;
+            $this->data["count"] = $count;
+            $this->data["dice"] = $this->dice;
+            $this->throws += 1;
     }
-
-
 
     public function showPost()
     {
-
         $this->data["post"] = $_POST;
-
     }
 
-    public function sumRound()
+    /**
+    * Sum values of choosen dice-value, sent via POST-form
+    *
+    * @return void
+    */
+    public function sumRound(): void
     {
+        $sum = 0;
         foreach ($this->savedValues as $key => $value) {
-            if ($value === (int)$_POST["submit"]) {
-                $this->sum += (int)$value;
+            if ((int)$value === (int)$_POST["diceValue"]) {
+                $sum += (int)$value;
             }
         }
 
-        $this->data["sum"] = $this->sum;
-        $this->score[$_POST["submit"]] =  $this->sum;
+        //set score for the choosen diceValue to sum
+        $this->score[$_POST["diceValue"]] = $sum;
         $this->data["score"] = $this->score;
 
-        $_SESSION["yatzySum"] += $this->sum;
+        $_SESSION["yatzySum"] += $sum;
     }
 
-    public function newRound()
+    /**
+    * Start new round
+    *
+    * @return void
+    */
+    public function newRound(): void
     {
         if ($this->round >= 6) {
             $this->message = "Game over";
             $this->savedValues = [];
             $this->data["savedValues"] = $this->savedValues;
-            $this->data["sum"] = $this->sum;
             $this->score["summa"] = $_SESSION["yatzySum"];
 
             if ($_SESSION["yatzySum"] >= 63) {
                 $this->score["bonus"] = 50;
             }
+
             $this->data["score"] = $this->score;
             return;
         }
-        $this->sum = 0;
+
         $this->dice = 5;
-        $this->diceRound = 0;
+        $this->throws = 0;
         $this->savedValues = [];
         $this->data["savedValues"] = $this->savedValues;
-        $this->data["sum"] = $this->sum;
         $this->round += 1;
+        $this->message = "Tryck på kasta för att kasta tärningarna!";
     }
 
     /**

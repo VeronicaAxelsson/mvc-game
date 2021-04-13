@@ -31,8 +31,6 @@ class Yatzy
 
         $body = renderView("layout/yatzy.php", $data);
 
-        // var_dump($_POST);
-
         return $psr17Factory
             ->createResponse(200)
             ->withBody($psr17Factory->createStream($body));
@@ -43,7 +41,10 @@ class Yatzy
         $psr17Factory = new Psr17Factory();
 
         $_SESSION["yatzy"]->showPost();
+        $_SESSION["yatzy"]->moveDice();
         $_SESSION["yatzy"]->rollDice();
+
+
 
         return (new Response())
             ->withStatus(301)

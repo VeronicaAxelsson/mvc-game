@@ -1,8 +1,6 @@
-START GAME
-
-WHILE number of rounds are less then 6
+IF number of rounds are less then 6
     start new round
-    WHILE number of throws are less then 3
+    IF number of throws are less then 3
         let player choose which die to throw
         let player choose what die to count
         store sum
