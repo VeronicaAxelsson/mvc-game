@@ -96,10 +96,10 @@ class Game
             $this->throws += 1;
     }
 
-    public function showPost()
-    {
-        $this->data["post"] = $_POST;
-    }
+    // public function showPost()
+    // {
+    //     $this->data["post"] = $_POST;
+    // }
 
     /**
     * Sum values of choosen dice-value, sent via POST-form
