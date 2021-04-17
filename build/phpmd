@@ -1,2 +1,0 @@
-C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:146	The method checkWinner uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:153	The method checkWinner uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.

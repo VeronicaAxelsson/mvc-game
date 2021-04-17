@@ -79,7 +79,7 @@ class Game
 
 
         if ($this->throws > 1) {
-            $this->message = "Välj vilka tärningar du vill räkna";
+            $this->message = "Välj vilka tärningar du vill räkna genom att trycka på en ruta i tabellen.";
             $this->dice -= $count;
             $this->rollDice();
             $count = 0;
