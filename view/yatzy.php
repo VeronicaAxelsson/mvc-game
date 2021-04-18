@@ -36,16 +36,14 @@ $tableValues = [
         </tr>
         <?php foreach ($tableValues as $key => $value) { ?>
             <tr>
-                <tr>
-                    <td>
-                        <?php if (isset($score[$key])) { ?>
-                            <?= $value ?>
-                        <?php } else { ?>
-                            <button name="diceValue" value="<?= $key ?>" type="submit"><?= $value ?></button>
-                        <?php } ?>
-                    </td>
-                    <td><?= isset($score[$key]) ? $score[$key] : ""; ?></td>
-                </tr>
+                <td>
+                    <?php if (isset($score[$key])) { ?>
+                        <?= $value ?>
+                    <?php } else { ?>
+                        <button name="diceValue" value="<?= $key ?>" type="submit"><?= $value ?></button>
+                    <?php } ?>
+                </td>
+                <td><?= isset($score[$key]) ? $score[$key] : ""; ?></td>
             </tr>
         <?php } ?>
         <tr>
