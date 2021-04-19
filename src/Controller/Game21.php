@@ -7,7 +7,7 @@ namespace Veax\Controller;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
-use Veax\Dice\Game;
+use Veax\Game21\Game;
 
 use function Mos\Functions\{
     renderView,

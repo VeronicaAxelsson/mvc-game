@@ -1,6 +1,6 @@
 <?php
 
-namespace Veax\Dice;
+namespace Veax\Game21;
 
 use Veax\Dice\DiceHand;
 
@@ -122,7 +122,7 @@ class Game
         $_SESSION["sumComputer"] = 0;
         $this->message = "Välj antal tärningar att kasta eller stanna";
 
-        redirectTo("game21");
+        // redirectTo("game21");
     }
 
     /**
