@@ -47,4 +47,21 @@ class DiceTest extends TestCase
         $exp = $this->dice->getLastRoll();
         $this->assertEquals($exp, $res);
     }
+
+    public function testRollDiceWithDefaultSides()
+    {
+        $res = $this->dice->rollDice();
+        $this->assertLessThanOrEqual(6, $res);
+        $this->assertGreaterThanOrEqual(1, $res);
+    }
+
+    public function testRollDiceWithSetSides()
+    {
+        $dice = new Dice(2);
+        $this->assertInstanceOf("\Veax\Dice\Dice", $dice);
+
+        $res = $dice->rollDice();
+        $this->assertLessThanOrEqual(2, $res);
+        $this->assertGreaterThanOrEqual(1, $res);
+    }
 }
