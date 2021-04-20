@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Game21</title>
+  <title>Dashboard for C:\Users\Admin\dbwebb-kurser\mvc\me\game\view\layout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -17,8 +17,8 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../../index.html">C:\Users\Admin\dbwebb-kurser\mvc\me\game</a></li>
-         <li class="breadcrumb-item"><a href="../index.html">src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Game21</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">view</a></li>
+         <li class="breadcrumb-item"><a href="index.html">layout</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -156,7 +156,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -174,7 +174,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,6], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -224,7 +224,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,22,"<a href=\"Game.php.html#10\">Veax\\Game21\\Game<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -248,7 +248,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,3,"<a href=\"Game.php.html#29\">Veax\\Game21\\Game::playGame<\/a>"],[100,1,"<a href=\"Game.php.html#51\">Veax\\Game21\\Game::getData<\/a>"],[100,5,"<a href=\"Game.php.html#61\">Veax\\Game21\\Game::rollDice<\/a>"],[100,4,"<a href=\"Game.php.html#89\">Veax\\Game21\\Game::playComputer<\/a>"],[100,1,"<a href=\"Game.php.html#108\">Veax\\Game21\\Game::resetGame<\/a>"],[100,8,"<a href=\"Game.php.html#122\">Veax\\Game21\\Game::checkWinner<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
