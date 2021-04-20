@@ -1,4 +1,6 @@
 {
+    "name": "veax/game",
+    "description": "Game",
     "autoload": {
         "psr-4": {
             "Mos\\": "src/",
