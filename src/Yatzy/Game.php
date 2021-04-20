@@ -52,11 +52,7 @@ class Game
     {
         $diceHand = new DiceHand($this->dice);
         $diceHand->roll();
-        $this->values = [];
-
-        foreach ($diceHand->values() as $roll) {
-            $this->values[] = $roll;
-        }
+        $this->values = $diceHand->values();
 
         $this->data["values"] = $this->values;
     }
@@ -68,17 +64,17 @@ class Game
     */
     public function moveDice(): void
     {
-            $count = 0;
+        $count = 0;
         foreach ($_POST as $key => $value) {
             if ($key !== "throw") {
                 $this->savedValues[] = $value;
                 $count += 1;
             }
         }
-            $this->message = "Välj vilka tärningar du vill behålla, och kasta igen.";
+        $this->message = "Välj vilka tärningar du vill behålla, och kasta igen.";
 
 
-        if ($this->throws > 1) {
+        if ($this->throws > 1 || count($this->savedValues) == 5) {
             $this->message = "Välj vilka tärningar du vill räkna genom att trycka på en ruta i tabellen.";
             $this->dice -= $count;
             $this->rollDice();
@@ -89,11 +85,13 @@ class Game
             }
         }
 
-            $this->dice -= $count;
-            $this->data["savedValues"] = $this->savedValues;
-            $this->data["count"] = $count;
-            $this->data["dice"] = $this->dice;
-            $this->throws += 1;
+        $this->dice -= $count;
+        $this->data["savedValues"] = $this->savedValues;
+        // $this->data["count"] = $count;
+        $this->data["dice"] = $this->dice;
+        $this->throws += 1;
+
+        $this->rollDice();
     }
 
     // public function showPost()
@@ -131,6 +129,7 @@ class Game
     {
         if ($this->round >= 6) {
             $this->message = "Game over";
+            $this->data["message"] = $this->message;
             $this->savedValues = [];
             $this->data["savedValues"] = $this->savedValues;
             $this->score["summa"] = $_SESSION["yatzySum"];
@@ -144,11 +143,13 @@ class Game
         }
 
         $this->dice = 5;
+        $this->data["dice"] = $this->dice;
         $this->throws = 0;
         $this->savedValues = [];
         $this->data["savedValues"] = $this->savedValues;
         $this->round += 1;
         $this->message = "Tryck på kasta för att kasta tärningarna!";
+        $this->data["message"] = $this->message;
     }
 
     /**
