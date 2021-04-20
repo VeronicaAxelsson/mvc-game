@@ -3,6 +3,7 @@
 namespace Veax\Dice;
 
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * Test cases for class Dice
@@ -64,7 +65,7 @@ class DiceHandTest extends TestCase
 
     public function testAverageOfValues()
     {
-        $reflector = new \ReflectionClass($this->diceHand);
+        $reflector = new ReflectionClass($this->diceHand);
         $reflectorSum = $reflector->getProperty("sum");
         $reflectorSum->setAccessible(true);
         $reflectorSum->setValue($this->diceHand, 15);
@@ -76,7 +77,7 @@ class DiceHandTest extends TestCase
 
     public function testSum()
     {
-        $reflector = new \ReflectionClass($this->diceHand);
+        $reflector = new ReflectionClass($this->diceHand);
         $reflectorSum = $reflector->getProperty("rolls");
         $reflectorSum->setAccessible(true);
         $reflectorSum->setValue($this->diceHand, [1, 2, 3]);
@@ -85,6 +86,4 @@ class DiceHandTest extends TestCase
         $exp = 6;
         $this->assertEquals($exp, $res);
     }
-
-
 }

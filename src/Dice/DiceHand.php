@@ -9,27 +9,27 @@ class DiceHand
 {
     /**
     * @var array $rolls     The value of the rolls.
-    * @var array $dices     Array with dies.
+    * @var array $dice     Array with dies.
     * @var array $classes   Array with graphic representation of rolls.
     * @var int $sum     Sum of the rolls.
     */
 
     private $rolls = [];
-    private $dices;
+    private $dice;
     private $classes = [];
     private $sum = null;
 
     /**
-    * Constructor to initiate the dicehand with a number of dices.
+    * Constructor to initiate the dicehand with a number of dice.
     *
-    * @param int $dices Number of dices to create, defaults to five.
+    * @param int $dice Number of dice to create, defaults to five.
     */
-    public function __construct(int $dices = 5)
+    public function __construct(int $dice = 5)
     {
-        $this->dices = [];
+        $this->dice = [];
 
-        for ($i = 0; $i < $dices; $i++) {
-            $this->dices[] = new GraphicalDice();
+        for ($i = 0; $i < $dice; $i++) {
+            $this->dice[] = new GraphicalDice();
         }
     }
     /**
@@ -39,9 +39,9 @@ class DiceHand
     */
     public function roll(): array
     {
-        foreach ($this->dices as $dice) {
-            $this->rolls[] = $dice->rollDice();
-            $this->classes[] = $dice->graphic();
+        foreach ($this->dice as $die) {
+            $this->rolls[] = $die->rollDice();
+            $this->classes[] = $die->graphic();
         }
 
         return $this->rolls;
@@ -58,13 +58,23 @@ class DiceHand
     }
 
     /**
-    * Get classes of die.
+    * Get classes of dice.
     *
     * @return array with classes for die.
     */
     public function graphic(): array
     {
         return $this->classes;
+    }
+
+    /**
+    * Get dice array.
+    *
+    * @return array with dice.
+    */
+    public function dice(): array
+    {
+        return $this->dice;
     }
 
     /**

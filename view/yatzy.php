@@ -22,7 +22,7 @@ $tableValues = [
     "5" => "Femmor",
     "6" => "Sexor"
 ];
-// var_dump($data);
+var_dump($data);
 ?>
 
 
