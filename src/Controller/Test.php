@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Veax\Controller;
 
-
 /**
  * Controller for the test route.
  */

@@ -3,10 +3,10 @@ PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 ................................................................. 65 / 65 (100%)
 
 
-Time: 00:11.176, Memory: 26.00 MB
+Time: 00:09.834, Memory: 26.00 MB
 
 OK (65 tests, 159 assertions)
 
-Generating code coverage report in Clover XML format ... done [00:00.230]
+Generating code coverage report in Clover XML format ... done [00:00.237]
 
-Generating code coverage report in HTML format ... done [00:01.109]
+Generating code coverage report in HTML format ... done [00:01.090]

@@ -1,0 +1,3 @@
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Game21\Game.php:133	The method checkWinner uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Game21\Game.php:140	The method checkWinner uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Admin\dbwebb-kurser\mvc\me\game\test\Game21\Game21Test.php:11	The class Game21Test has 11 public methods. Consider refactoring Game21Test to keep number of public methods under 10.

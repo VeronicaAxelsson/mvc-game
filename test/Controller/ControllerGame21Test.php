@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Veax\Game21\Game;
 use ReflectionClass;
+
 /**
  * Test cases for the controller Game21.
  */

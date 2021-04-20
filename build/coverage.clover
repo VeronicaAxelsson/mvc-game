@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1618938438">
-  <project timestamp="1618938438">
+<coverage generated="1618941793">
+  <project timestamp="1618941793">
     <file name="C:\Users\Admin\dbwebb-kurser\mvc\me\game\config\bootstrap.php">
       <line num="10" type="stmt" count="1"/>
       <line num="11" type="stmt" count="1"/>
@@ -151,9 +151,9 @@
       <class name="Veax\Controller\Test" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="13" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="15" type="stmt" count="1"/>
-      <metrics loc="17" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      <line num="12" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <metrics loc="16" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Controller\TwigView.php">
       <class name="Mos\Controller\TwigView" namespace="global">
@@ -301,21 +301,21 @@
       <line num="115" type="stmt" count="3"/>
       <line num="122" type="method" name="checkWinner" visibility="public" complexity="8" crap="8" count="8"/>
       <line num="124" type="stmt" count="8"/>
-      <line num="125" type="stmt" count="1"/>
-      <line num="126" type="stmt" count="7"/>
+      <line num="125" type="stmt" count="2"/>
+      <line num="126" type="stmt" count="6"/>
       <line num="127" type="stmt" count="1"/>
       <line num="128" type="stmt" count="1"/>
-      <line num="129" type="stmt" count="6"/>
-      <line num="130" type="stmt" count="2"/>
-      <line num="131" type="stmt" count="1"/>
-      <line num="132" type="stmt" count="1"/>
+      <line num="129" type="stmt" count="5"/>
+      <line num="130" type="stmt" count="3"/>
+      <line num="131" type="stmt" count="2"/>
+      <line num="132" type="stmt" count="2"/>
       <line num="134" type="stmt" count="1"/>
-      <line num="135" type="stmt" count="2"/>
-      <line num="137" type="stmt" count="4"/>
-      <line num="138" type="stmt" count="2"/>
-      <line num="139" type="stmt" count="2"/>
-      <line num="141" type="stmt" count="2"/>
-      <line num="142" type="stmt" count="2"/>
+      <line num="135" type="stmt" count="3"/>
+      <line num="137" type="stmt" count="2"/>
+      <line num="138" type="stmt" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="141" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="1"/>
       <line num="144" type="stmt" count="8"/>
       <metrics loc="145" ncloc="106" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="59" coveredelements="59"/>
     </file>
@@ -573,6 +573,6 @@
       <line num="90" type="stmt" count="0"/>
       <metrics loc="93" ncloc="89" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="24" elements="30" coveredelements="24"/>
     </file>
-    <metrics files="29" loc="1495" ncloc="1157" classes="14" methods="43" coveredmethods="43" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="387" elements="443" coveredelements="430"/>
+    <metrics files="29" loc="1494" ncloc="1156" classes="14" methods="43" coveredmethods="43" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="387" elements="443" coveredelements="430"/>
   </project>
 </coverage>
