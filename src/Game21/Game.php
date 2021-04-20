@@ -4,12 +4,6 @@ namespace Veax\Game21;
 
 use Veax\Dice\DiceHand;
 
-use function Mos\Functions\{
-    redirectTo,
-    renderView,
-    sendResponse
-};
-
 /**
  * Dice class
  */
@@ -46,8 +40,6 @@ class Game
         if (isset($_SESSION["sumComputer"])) {
             $this->data["sumComputer"] = $_SESSION["sumComputer"];
         }
-        // $body = renderView("layout/game21.php", $this->data);
-        // sendResponse($body);
     }
 
 
@@ -72,24 +64,21 @@ class Game
             $_SESSION["sumPlayer"] = 0;
         }
 
-        $_SESSION["diceHand"] = new DiceHand((int)$_POST["die"]);
-        $rolls = $_SESSION["diceHand"]->roll();
+        $diceHand = new DiceHand((int)$_POST["die"]);
+        $rolls = $diceHand->roll();
         foreach ($rolls as $roll) {
             $_SESSION["sumPlayer"] += $roll;
         }
         /* Om diceHand finns hämtas grafisk representation och läggs i $classes */
-        if (isset($_SESSION["diceHand"])) {
-            $this->classes = [];
-            foreach ($_SESSION["diceHand"]->graphic() as $roll) {
-                $this->classes[] = $roll;
-            }
+        $this->classes = [];
+        foreach ($diceHand->graphic() as $roll) {
+            $this->classes[] = $roll;
         }
 
         if ($_SESSION["sumPlayer"] >= 21) {
+            self::playComputer();
             self::checkWinner();
         }
-
-        // redirectTo("game21");
     }
 
     /**
@@ -103,8 +92,8 @@ class Game
             $_SESSION["sumComputer"] = 0;
         }
         while ($_SESSION["sumComputer"] < 21) {
-            $_SESSION["diceHand"] = new DiceHand(1);
-            $rolls = $_SESSION["diceHand"]->roll();
+            $diceHand = new DiceHand(1);
+            $rolls = $diceHand->roll();
             foreach ($rolls as $roll) {
                 $_SESSION["sumComputer"] += $roll;
             }
@@ -132,8 +121,6 @@ class Game
     */
     public function checkWinner(): void
     {
-        // var_dump($_SESSION);
-        self::playComputer();
         if ($_SESSION["sumComputer"] > 21 && $_SESSION["sumPlayer"] > 21) {
             $this->message = "Båda förlorade";
         } elseif ($_SESSION["sumComputer"] === $_SESSION["sumPlayer"]) {
@@ -154,7 +141,5 @@ class Game
             $this->message = "Datorn vinner";
             $this->pointsComputer += 1;
         }
-
-        // redirectTo("game21");
     }
 }
