@@ -40,7 +40,8 @@ class Yatzy
     public function throw(): ResponseInterface
     {
         $_SESSION["yatzy"]->moveDice();
-        $_SESSION["yatzy"]->rollDice();
+        // $_SESSION["yatzy"]->showPost();
+        // $_SESSION["yatzy"]->rollDice();
 
         return (new Response())
             ->withStatus(301)

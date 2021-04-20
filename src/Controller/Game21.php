@@ -48,6 +48,7 @@ class Game21
 
     public function end(): ResponseInterface
     {
+        $_SESSION["game"]->playComputer();
         $_SESSION["game"]->checkWinner();
 
         return (new Response())
