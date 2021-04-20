@@ -7,6 +7,7 @@ namespace Veax\Controller;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Veax\Yatzy\Game;
+use ReflectionClass;
 
 /**
  * Test cases for the controller Game21.
@@ -44,6 +45,12 @@ class ControllerYatzyTest extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->throw();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/yatzy", $header);
     }
 
     /**
@@ -56,6 +63,12 @@ class ControllerYatzyTest extends TestCase
         $res = $this->controller->newGame();
         $this->assertInstanceOf($exp, $res);
         $this->assertEquals(0, $_SESSION["yatzySum"]);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/yatzy", $header);
     }
 
     /**
@@ -69,5 +82,11 @@ class ControllerYatzyTest extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->newRound();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/yatzy", $header);
     }
 }

@@ -7,7 +7,7 @@ namespace Veax\Controller;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Veax\Game21\Game;
-
+use ReflectionClass;
 /**
  * Test cases for the controller Game21.
  */
@@ -46,6 +46,12 @@ class ControllerGame21Test extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->roll();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $path = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $path);
     }
 
     /**
@@ -59,6 +65,12 @@ class ControllerGame21Test extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->end();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $path = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $path);
     }
 
     /**
@@ -71,6 +83,12 @@ class ControllerGame21Test extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->reset();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $path = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $path);
     }
 
     /**
@@ -83,5 +101,11 @@ class ControllerGame21Test extends TestCase
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $this->controller->newRound();
         $this->assertInstanceOf($exp, $res);
+
+        $reflector = new ReflectionClass($res);
+        $reflectorProperty = $reflector->getProperty("headers");
+        $reflectorProperty->setAccessible(true);
+        $path = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $path);
     }
 }
