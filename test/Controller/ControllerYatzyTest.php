@@ -14,10 +14,10 @@ use ReflectionClass;
  */
 class ControllerYatzyTest extends TestCase
 {
-    /**
-     * Test up with creating controller class assert.
-     */
     private $controller;
+    /**
+     * Test setUp with creating controller class and assert.
+     */
     public function setUp(): void
     {
         session_start();
@@ -38,6 +38,7 @@ class ControllerYatzyTest extends TestCase
 
     /**
     *  @runInSeparateProcess
+    * Check that the throw action returns a response and right header.
     */
     public function testControllerThrowAction()
     {
@@ -55,6 +56,7 @@ class ControllerYatzyTest extends TestCase
 
     /**
     *  @runInSeparateProcess
+    * Check that the newGame action returns a response and right header.
     */
     public function testControllerNewGameAction()
     {
@@ -73,6 +75,7 @@ class ControllerYatzyTest extends TestCase
 
     /**
     *  @runInSeparateProcess
+    * Check that the newGame action returns a response and right header.
     */
     public function testControllerNewRoundAction()
     {

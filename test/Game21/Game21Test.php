@@ -18,6 +18,9 @@ class Game21Test extends TestCase
         $this->assertInstanceOf("\Veax\Game21\Game", $this->game21);
     }
 
+    /**
+     * Check that playGame sets values in data and SESSION
+     */
     public function testGameSetUpWithPlayGame()
     {
         $_SESSION["sumPlayer"] = 0;
@@ -35,6 +38,9 @@ class Game21Test extends TestCase
         $this->assertEquals($res["sumComputer"], $_SESSION["sumComputer"]);
     }
 
+    /**
+     * Check that rollDice adds sum of rolls to $_SESSION["sumPLayer"]
+     */
     public function testRollDice()
     {
         $_POST = ["die" => 2];
@@ -44,6 +50,9 @@ class Game21Test extends TestCase
         $this->assertArrayHasKey("sumPlayer", $_SESSION);
     }
 
+    /**
+     * Check that round ends when sumPlayer is over 21
+     */
     public function testRollDicePlayerOver21()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -60,6 +69,9 @@ class Game21Test extends TestCase
         $this->assertGreaterThanOrEqual(21, $_SESSION["sumComputer"]);
     }
 
+    /**
+     * Check that game resets
+     */
     public function testResetGame()
     {
         $this->game21->resetGame();
@@ -67,6 +79,9 @@ class Game21Test extends TestCase
         $this->assertEquals(0, $_SESSION["sumPlayer"]);
     }
 
+    /**
+     * Check that sumComputer ends within interval 21-26
+     */
     public function testPlayComputer()
     {
         $_SESSION["sumComputer"] = null;
@@ -75,6 +90,9 @@ class Game21Test extends TestCase
         $this->assertGreaterThanOrEqual(21, $_SESSION["sumComputer"]);
     }
 
+    /**
+     * Check that right messege is displayed when both loose
+     */
     public function testCheckWinnerBothLose()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -89,6 +107,9 @@ class Game21Test extends TestCase
         $this->assertEquals("Båda förlorade", $res);
     }
 
+    /**
+     * Check that right messege is displayed when its a tie
+     */
     public function testCheckWinnerTie()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -103,6 +124,10 @@ class Game21Test extends TestCase
         $this->assertEquals("Datorn vinner", $res);
     }
 
+    /**
+     * Check that right messege is displayed when both under 21 and
+     * computer loose
+     */
     public function testCheckWinnerBothUnder21ComputerClosest()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -117,6 +142,10 @@ class Game21Test extends TestCase
         $this->assertEquals("Datorn vinner", $res);
     }
 
+    /**
+     * Check that right messege is displayed when both under 21 and
+     * player loose
+     */
     public function testCheckWinnerBothUnder21PlayerClosest()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -131,6 +160,10 @@ class Game21Test extends TestCase
         $this->assertEquals("Du vann!!", $res);
     }
 
+    /**
+     * Check that right messege is displayed when player under 21
+     * and computer over
+     */
     public function testCheckWinnerPlayerUnder21ComputerOver()
     {
         $reflector = new ReflectionClass($this->game21);
@@ -145,6 +178,10 @@ class Game21Test extends TestCase
         $this->assertEquals("Du vann!!", $res);
     }
 
+    /**
+     * Check that right messege is displayed when computer under 21
+     * and player over
+     */
     public function testCheckWinnerComputerUnder21PlayerOver()
     {
         $reflector = new ReflectionClass($this->game21);

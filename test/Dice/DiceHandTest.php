@@ -63,6 +63,9 @@ class DiceHandTest extends TestCase
         $this->assertCount(5, $this->diceHand->graphic());
     }
 
+    /**
+     * Check that average returns the average of set sum
+     */
     public function testAverageOfValues()
     {
         $reflector = new ReflectionClass($this->diceHand);
@@ -75,6 +78,9 @@ class DiceHandTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    /**
+     * Check that sum returns the sum of set values.
+     */
     public function testSum()
     {
         $reflector = new ReflectionClass($this->diceHand);

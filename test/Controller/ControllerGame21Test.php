@@ -51,8 +51,8 @@ class ControllerGame21Test extends TestCase
         $reflector = new ReflectionClass($res);
         $reflectorProperty = $reflector->getProperty("headers");
         $reflectorProperty->setAccessible(true);
-        $path = $reflectorProperty->getValue($res)['Location'][0];
-        $this->assertStringEndsWith("/game21", $path);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $header);
     }
 
     /**
@@ -70,8 +70,8 @@ class ControllerGame21Test extends TestCase
         $reflector = new ReflectionClass($res);
         $reflectorProperty = $reflector->getProperty("headers");
         $reflectorProperty->setAccessible(true);
-        $path = $reflectorProperty->getValue($res)['Location'][0];
-        $this->assertStringEndsWith("/game21", $path);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $header);
     }
 
     /**
@@ -88,8 +88,8 @@ class ControllerGame21Test extends TestCase
         $reflector = new ReflectionClass($res);
         $reflectorProperty = $reflector->getProperty("headers");
         $reflectorProperty->setAccessible(true);
-        $path = $reflectorProperty->getValue($res)['Location'][0];
-        $this->assertStringEndsWith("/game21", $path);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $header);
     }
 
     /**
@@ -106,7 +106,7 @@ class ControllerGame21Test extends TestCase
         $reflector = new ReflectionClass($res);
         $reflectorProperty = $reflector->getProperty("headers");
         $reflectorProperty->setAccessible(true);
-        $path = $reflectorProperty->getValue($res)['Location'][0];
-        $this->assertStringEndsWith("/game21", $path);
+        $header = $reflectorProperty->getValue($res)['Location'][0];
+        $this->assertStringEndsWith("/game21", $header);
     }
 }

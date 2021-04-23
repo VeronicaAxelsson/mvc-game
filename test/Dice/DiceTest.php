@@ -17,6 +17,9 @@ class DiceTest extends TestCase
         $this->assertInstanceOf("\Veax\Dice\Dice", $this->dice);
     }
 
+    /**
+     *  Verify that dice gets 6 sides when created with no argument
+     */
     public function testCreateDiceWithNoArgument()
     {
         $res = $this->dice->getSides();
@@ -24,6 +27,10 @@ class DiceTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    /**
+     *  Verify that dice gets given amount of  sides when created
+     * with given argument
+     */
     public function testCreateDiceWithArgument()
     {
         $dice = new Dice(2);
@@ -34,6 +41,9 @@ class DiceTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    /**
+     *  Verify that lastRoll is null before first throw
+     */
     public function testGetLastRollBeforeRoll()
     {
         $res = $this->dice->getLastRoll();
@@ -41,6 +51,9 @@ class DiceTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    /**
+     *  Verify that roll is saved and retrivable with getLastRoll
+     */
     public function testGetLastRollAfterRoll()
     {
         $res = $this->dice->rollDice();
@@ -48,6 +61,9 @@ class DiceTest extends TestCase
         $this->assertEquals($exp, $res);
     }
 
+    /**
+     *  Verify that rollDice returns value within number of sides
+     */
     public function testRollDiceWithDefaultSides()
     {
         $res = $this->dice->rollDice();
@@ -55,6 +71,9 @@ class DiceTest extends TestCase
         $this->assertGreaterThanOrEqual(1, $res);
     }
 
+    /**
+     *  Verify that rollDice returns value within number of set sides
+     */
     public function testRollDiceWithSetSides()
     {
         $dice = new Dice(2);

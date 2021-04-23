@@ -22,11 +22,4 @@ class ConfigBootstrapTest extends TestCase
         $res = require $this->configFile;
         $this->assertEquals($exp, $res);
     }
-    //
-    // public function testStartSession()
-    // {
-    //     // require $this->configFile;
-    //     $res = $this->createMock("isNotCli");
-    //     var_dump($res);
-    // }
 }

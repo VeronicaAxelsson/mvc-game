@@ -19,12 +19,18 @@ class YatzyTest extends TestCase
         $this->assertInstanceOf("\Veax\Yatzy\Game", $this->yatzy);
     }
 
+    /**
+     * Check that playGame sets yatzySum in SESSION
+     */
     public function testGameSetUpWithPlayGame()
     {
         $this->yatzy->playGame();
         $this->assertArrayHasKey("yatzySum", $_SESSION);
     }
 
+    /**
+     * Check that rollDice adds a array of 5 values to data["value"]
+     */
     public function testRollDice()
     {
         $this->yatzy->rollDice();
@@ -33,6 +39,10 @@ class YatzyTest extends TestCase
         $this->assertCount(5, $res["values"]);
     }
 
+    /**
+     * Check that moveDice places dice values from POST to savedValues
+     * and only throws 3 dice instead of 5 -> saves 3 values in data["values"]
+     */
     public function testMoveDiceWithPresetPostData()
     {
         $reflector = new ReflectionClass($this->yatzy);
@@ -55,6 +65,9 @@ class YatzyTest extends TestCase
         $this->assertEquals($throwsAfter, $throwsBefore + 1);
     }
 
+    /**
+     * Check that all dice moves to savedValues when no throws left
+     */
     public function testMoveDiceFromValuesToSavedValuesWithNoThrowsLeft()
     {
         $reflector = new ReflectionClass($this->yatzy);
@@ -69,6 +82,9 @@ class YatzyTest extends TestCase
         $this->assertCount(0, $res["values"]);
     }
 
+    /**
+     * Check that all dice moves to savedValues when all dice choosen
+     */
     public function testMoveDiceFromValuesToSavedValuesWithNoValuesLeft()
     {
         $_POST = [
@@ -87,6 +103,10 @@ class YatzyTest extends TestCase
         $this->assertCount(0, $res["values"]);
     }
 
+    /**
+     * Check that all values are summed and saved in data["score"] with
+     * dice value as key and added to SESSION["yatzySum"]
+     */
     public function testSumRound()
     {
         $reflector = new ReflectionClass($this->yatzy);
@@ -102,6 +122,9 @@ class YatzyTest extends TestCase
         $this->assertEquals(5, $_SESSION["yatzySum"]);
     }
 
+    /**
+     * Check that new round starts when there are rounds left
+     */
     public function testNewRoundWithRoundsLeft()
     {
         $reflector = new ReflectionClass($this->yatzy);
@@ -119,6 +142,9 @@ class YatzyTest extends TestCase
         $this->assertEquals($roundAfter, $roundBefore + 1);
     }
 
+    /**
+     * Check that game ends when there are no rounds left
+     */
     public function testNewRoundWithNoRoundsLeft()
     {
         $reflector = new ReflectionClass($this->yatzy);
@@ -136,6 +162,10 @@ class YatzyTest extends TestCase
         $this->assertEquals(1, $res["score"]["summa"]);
     }
 
+    /**
+     * Check that game ends when there are no rounds left and bonus is
+     * set when yatzySum over 63
+     */
     public function testNewRoundWithNoRoundsLeftAndBonus()
     {
         $reflector = new ReflectionClass($this->yatzy);
