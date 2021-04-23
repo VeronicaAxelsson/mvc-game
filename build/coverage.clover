@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1618941793">
-  <project timestamp="1618941793">
+<coverage generated="1619189515">
+  <project timestamp="1619189515">
     <file name="C:\Users\Admin\dbwebb-kurser\mvc\me\game\config\bootstrap.php">
       <line num="10" type="stmt" count="1"/>
       <line num="11" type="stmt" count="1"/>
@@ -298,26 +298,26 @@
       <line num="110" type="stmt" count="3"/>
       <line num="111" type="stmt" count="3"/>
       <line num="112" type="stmt" count="3"/>
-      <line num="115" type="stmt" count="3"/>
-      <line num="122" type="method" name="checkWinner" visibility="public" complexity="8" crap="8" count="8"/>
-      <line num="124" type="stmt" count="8"/>
-      <line num="125" type="stmt" count="2"/>
-      <line num="126" type="stmt" count="6"/>
-      <line num="127" type="stmt" count="1"/>
-      <line num="128" type="stmt" count="1"/>
-      <line num="129" type="stmt" count="5"/>
-      <line num="130" type="stmt" count="3"/>
-      <line num="131" type="stmt" count="2"/>
-      <line num="132" type="stmt" count="2"/>
-      <line num="134" type="stmt" count="1"/>
+      <line num="113" type="stmt" count="3"/>
+      <line num="120" type="method" name="checkWinner" visibility="public" complexity="8" crap="8" count="8"/>
+      <line num="122" type="stmt" count="8"/>
+      <line num="123" type="stmt" count="2"/>
+      <line num="124" type="stmt" count="6"/>
+      <line num="125" type="stmt" count="1"/>
+      <line num="126" type="stmt" count="1"/>
+      <line num="127" type="stmt" count="5"/>
+      <line num="128" type="stmt" count="2"/>
+      <line num="129" type="stmt" count="1"/>
+      <line num="130" type="stmt" count="1"/>
+      <line num="132" type="stmt" count="1"/>
+      <line num="133" type="stmt" count="2"/>
       <line num="135" type="stmt" count="3"/>
+      <line num="136" type="stmt" count="2"/>
       <line num="137" type="stmt" count="2"/>
-      <line num="138" type="stmt" count="1"/>
       <line num="139" type="stmt" count="1"/>
-      <line num="141" type="stmt" count="1"/>
-      <line num="142" type="stmt" count="1"/>
-      <line num="144" type="stmt" count="8"/>
-      <metrics loc="145" ncloc="106" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="59" coveredelements="59"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="8"/>
+      <metrics loc="143" ncloc="104" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="59" coveredelements="59"/>
     </file>
     <file name="C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\Yatzy\Game.php">
       <class name="Veax\Yatzy\Game" namespace="global">
@@ -352,30 +352,31 @@
       <line num="84" type="stmt" count="1"/>
       <line num="88" type="stmt" count="4"/>
       <line num="89" type="stmt" count="4"/>
+      <line num="90" type="stmt" count="4"/>
       <line num="91" type="stmt" count="4"/>
-      <line num="92" type="stmt" count="4"/>
+      <line num="93" type="stmt" count="4"/>
       <line num="94" type="stmt" count="4"/>
-      <line num="95" type="stmt" count="4"/>
-      <line num="107" type="method" name="sumRound" visibility="public" complexity="3" crap="3" count="2"/>
+      <line num="106" type="method" name="sumRound" visibility="public" complexity="3" crap="3" count="2"/>
+      <line num="108" type="stmt" count="2"/>
       <line num="109" type="stmt" count="2"/>
-      <line num="110" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="1"/>
       <line num="111" type="stmt" count="1"/>
-      <line num="112" type="stmt" count="1"/>
+      <line num="116" type="stmt" count="2"/>
       <line num="117" type="stmt" count="2"/>
-      <line num="118" type="stmt" count="2"/>
+      <line num="119" type="stmt" count="2"/>
       <line num="120" type="stmt" count="2"/>
-      <line num="121" type="stmt" count="2"/>
-      <line num="128" type="method" name="newRound" visibility="public" complexity="3" crap="3" count="4"/>
-      <line num="130" type="stmt" count="4"/>
+      <line num="127" type="method" name="newRound" visibility="public" complexity="3" crap="3" count="4"/>
+      <line num="129" type="stmt" count="4"/>
+      <line num="130" type="stmt" count="2"/>
       <line num="131" type="stmt" count="2"/>
       <line num="132" type="stmt" count="2"/>
       <line num="133" type="stmt" count="2"/>
       <line num="134" type="stmt" count="2"/>
-      <line num="135" type="stmt" count="2"/>
-      <line num="137" type="stmt" count="2"/>
-      <line num="138" type="stmt" count="1"/>
+      <line num="136" type="stmt" count="2"/>
+      <line num="137" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="2"/>
       <line num="141" type="stmt" count="2"/>
-      <line num="142" type="stmt" count="2"/>
+      <line num="144" type="stmt" count="2"/>
       <line num="145" type="stmt" count="2"/>
       <line num="146" type="stmt" count="2"/>
       <line num="147" type="stmt" count="2"/>
@@ -384,10 +385,9 @@
       <line num="150" type="stmt" count="2"/>
       <line num="151" type="stmt" count="2"/>
       <line num="152" type="stmt" count="2"/>
-      <line num="153" type="stmt" count="2"/>
-      <line num="160" type="method" name="getData" visibility="public" complexity="1" crap="1" count="9"/>
-      <line num="162" type="stmt" count="9"/>
-      <metrics loc="164" ncloc="117" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="64" coveredelements="64"/>
+      <line num="159" type="method" name="getData" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="161" type="stmt" count="9"/>
+      <metrics loc="163" ncloc="116" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="64" coveredelements="64"/>
     </file>
     <file name="C:\Users\Admin\dbwebb-kurser\mvc\me\game\src\functions.php">
       <line num="22" type="stmt" count="2"/>
@@ -573,6 +573,6 @@
       <line num="90" type="stmt" count="0"/>
       <metrics loc="93" ncloc="89" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="24" elements="30" coveredelements="24"/>
     </file>
-    <metrics files="29" loc="1494" ncloc="1156" classes="14" methods="43" coveredmethods="43" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="387" elements="443" coveredelements="430"/>
+    <metrics files="29" loc="1491" ncloc="1153" classes="14" methods="43" coveredmethods="43" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="387" elements="443" coveredelements="430"/>
   </project>
 </coverage>

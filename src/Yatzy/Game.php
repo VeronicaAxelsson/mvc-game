@@ -87,7 +87,6 @@ class Game
 
         $this->dice -= $count;
         $this->data["savedValues"] = $this->savedValues;
-        // $this->data["count"] = $count;
         $this->data["dice"] = $this->dice;
         $this->throws += 1;
 

@@ -110,8 +110,6 @@ class Game
         $_SESSION["sumPlayer"] = 0;
         $_SESSION["sumComputer"] = 0;
         $this->message = "Välj antal tärningar att kasta eller stanna";
-
-        // redirectTo("game21");
     }
 
     /**
